@@ -1,0 +1,7 @@
+<div>
+    <input type="text" [(ngModel)]="userName" placeholder="Enter username" />
+    <input type="text" [(ngModel)]="password" placeholder="Enter password" />
+    <input type="radio" [(ngModel)]="userType" value="admin" /> Admin
+    <input type="radio" [(ngModel)]="userType" value="user" /> User
+    <button (click)="login()">Login</button>
+</div>

@@ -1,0 +1,23 @@
+<h2>Preview Form: {{ formName }}</h2>
+
+<div *ngFor="let field of formFields">
+  <label>{{ field.label }}</label>
+  <ng-container [ngSwitch]="field.type">
+    <input *ngSwitchCase="'text'" type="text" />
+    <textarea *ngSwitchCase="'textarea'"></textarea>
+    <div *ngSwitchCase="'radio'">
+      <div *ngFor="let option of field.options">
+        <input type="radio" [name]="field.label" /> {{ option }}
+      </div>
+    </div>
+    <div *ngSwitchCase="'checkbox'">
+      <input type="checkbox" /> {{ field.label }}
+    </div>
+    <select *ngSwitchCase="'dropdown'">
+      <option *ngFor="let option of field.options">{{ option }}</option>
+    </select>
+    <button *ngSwitchCase="'button'">{{ field.label }}</button>
+  </ng-container>
+</div>
+
+<button (click)="goBack()">Back to Dashboard</button>

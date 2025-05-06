@@ -1,0 +1,16 @@
+/* filepath: d:\practise\googleFormFields\googleformfields\src\app\admin\dashboard\dashboard.component.scss */
+button.edit-btn, button.delete-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+button.edit-btn:hover {
+  color: blue;
+}
+
+button.delete-btn:hover {
+  color: red;
+}

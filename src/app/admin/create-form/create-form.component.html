@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>{{ data ? 'Edit Form' : 'Create Form' }}</h2>
+<mat-dialog-content>
+  <form>
+    <!-- Form Name Input -->
+    <div>
+      <label for="formName">Form Name:</label>
+      <input id="formName" type="text" [(ngModel)]="formName" name="formName" />
+    </div>
+
+    <!-- Existing Fields -->
+    <h3>Existing Fields</h3>
+    <div *ngFor="let field of formFields; let i = index">
+      <label>{{ field.label }} ({{ field.type }})</label>
+      <button type="button" (click)="deleteField(i)">Delete</button>
+    </div>
+
+    <!-- Add New Field -->
+    <h3>Add New Field</h3>
+    <div>
+      <label for="fieldType">Field Type:</label>
+      <select id="fieldType" [(ngModel)]="selectedFieldType" name="fieldType">
+        <option value="text">Text Input</option>
+        <option value="textarea">Text Area</option>
+        <option value="radio">Radio Button</option>
+        <option value="checkbox">Checkbox</option>
+        <option value="dropdown">Dropdown</option>
+        <option value="button">Button</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="fieldLabel">Field Label:</label>
+      <input id="fieldLabel" type="text" [(ngModel)]="fieldLabel" name="fieldLabel" />
+    </div>
+
+    <div *ngIf="selectedFieldType === 'radio' || selectedFieldType === 'dropdown'">
+      <label for="options">Options (comma-separated):</label>
+      <input id="options" type="text" [(ngModel)]="fieldOptions" name="options" />
+    </div>
+
+    <button type="button" (click)="addField()">Add Field</button>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="saveForm()">Save</button>
+</mat-dialog-actions>
