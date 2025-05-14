@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Available Forms</h2>
+<mat-dialog-content>
+  <div *ngIf="formsCreated.length === 0">No forms available to fill.</div>
+  <ul *ngIf="formsCreated.length > 0">
+    <li *ngFor="let form of formsCreated">
+      <span>{{ form.name }}</span>
+      <button (click)="fillForm(form)">Fill Form</button>
+    </li>
+  </ul>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Close</button>
+</mat-dialog-actions>
